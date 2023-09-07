@@ -1,6 +1,23 @@
 <template>
   <div>
-    333
+    <table class="table align-middle caption-top">
+                            <thead>
+                              <tr>
+                                <th v-for ="item in thArray" :key="item"  scope="col">{{item}}</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="(item,index) in catalog" :key="index" >
+                                <td>{{ item.name }}</td>
+                                <td>
+                                   {{ item.price }}  
+                                </td>
+
+                              </tr>
+                             
+                            </tbody>
+</table>
+
   </div>  
   
 </template>
@@ -10,6 +27,7 @@ export default {
   name: 'CatalogOfProducts',
   data(){
     return{
+      thArray:  ['Наименование','Цена','Действия'] ,
 
     }
   },

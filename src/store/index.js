@@ -7,8 +7,9 @@ import data from "../../2_catalog_19-06-2023.json";
 
 export default new Vuex.Store({
   state: {
-    catalog: []
-  },
+    catalog: [],
+    bascket: []
+},
 
   mutations: {
          // записываем в state полученную информацию
