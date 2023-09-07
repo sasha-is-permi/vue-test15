@@ -8,7 +8,6 @@ import data from "../../2_catalog_19-06-2023.json";
 export default new Vuex.Store({
   state: {
     catalog: [],
-    bascket: []
 },
 
   mutations: {
@@ -22,7 +21,16 @@ export default new Vuex.Store({
 
      // Получение всех элементов из json-файла
       getCatalog({commit}){  
-       commit('catalog',data)
+       
+      // Добавляем к полученным данным id для нумерации и count - сколько позиций куплено  
+      let catalog =[...data];
+      for(let i=0; i<data.length; i++){
+        catalog[i].id = i+1; 
+        catalog[i].count = 0;  
+      }  
+
+       commit('catalog',catalog)
+
       }
               
   },

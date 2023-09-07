@@ -7,12 +7,34 @@
                                </tr>
                             </thead>
                             <tbody>
-                              <tr v-for="(item,index) in catalog" :key="index" >
-                                <td>{{ item.name }}</td>
+                              <tr v-for="item in catalog" :key="item.id" >
+                                <td>
+                                  {{ item.name }}
+                                </td>
                                 <td>
                                    {{ item.price }}  
                                 </td>
+                                <span class="table__count">
 
+                                <td>
+                                <span>
+                                 <img src="../assets/img/keyboard.jpg">
+                                </span>  
+                                <span class="table__countElem">
+                                   {{ item.count }}  
+                                </span>
+                                <span class="table__countElem">
+                                <button> + </button>
+                                </span>
+                                <span class="table__countElem">
+                                <button> - </button>
+                                </span>
+                                <span class="table__countElem">
+                                 <img src="../assets/img/basket.jpg">
+                                </span>
+
+                              </td>
+                              </span>
                               </tr>
                              
                             </tbody>
@@ -62,6 +84,13 @@ export default {
 </script>
 
 <style scoped>
+.table__count{
+  text-align: left;
 
+}
+
+.table__countElem{
+  margin: 0 10px 0 10px;
+}
 </style>
 
