@@ -1,5 +1,5 @@
 <template>
-  <div class="table-wrap">
+  <div class="basket-products">
     <table class="table align-middle caption-top">
                             <thead>
                               <tr>
@@ -18,7 +18,7 @@
                                    {{ item.basket }}  
                                 </td>
                                 <td>
-                                   {{ item.price * item.basket }}  
+                                   {{ Math.round(item.price * item.basket*100)/100 }}  
                                 </td>
 
                                 <td >
@@ -29,7 +29,25 @@
                               </tr>
                              
                             </tbody>
+
+                            <tfoot>
+                           <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Итого:</td>
+                            <td>{{sumBasket}}</td>
+                          </tr>
+                         </tfoot>
 </table>
+
+<div class="buttons">
+
+ <button  @click="getProducts">  Берем </button>
+
+ <button @click="clearBasket"> Пожалуй, откажусь  </button>
+
+</div>
+
 
   </div>  
   
@@ -66,6 +84,15 @@ export default {
            this.$store.dispatch('transferProductToBasket',id)
       },
 
+      clearBasket(){
+           this.$store.dispatch('clearBasket')
+      },
+
+      getProducts(){
+        this.$store.dispatch('getProducts');
+        this.$router.push( {name: 'CatalogOfProducts'})
+      }
+
       
 
     },
@@ -74,8 +101,11 @@ export default {
         
         catalog() { 
                 return this.$store.getters.catalog.filter(item=> item.basket!==0);             
-        }
+        },
 
+        sumBasket(){
+          return  this.$store.state.catalog.reduce((sum, current) => sum + Math.round(current.basket*current.price*100 )/100, 0);
+        }  
               },    
   }
 
@@ -91,6 +121,18 @@ export default {
 
 .table>:not(caption)>*>* {
     border-bottom-width: 0px;
+}
+
+.basket-products{
+  position:relative;
+}
+.buttons{
+  width:250px;
+  display:flex;
+  justify-content: space-between;
+  position:absolute;
+  bottom:-30px;
+  right:30px;
 }
 
 </style>

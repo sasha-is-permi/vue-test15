@@ -1,6 +1,6 @@
 <template>
   <div>
-  <button class="button"   @click="$router.push({ name: 'BasketProducts'})">
+  <button class="button"   @click="goToBasket">
       КОРЗИНА ({{ count }})
   </button>
  </div> 
@@ -16,6 +16,9 @@ data(){
 },
 
   methods:{
+    goToBasket(){
+     if (this.$route.name!=="BasketProducts")  this.$router.push( {name: 'BasketProducts'})
+    }
 
   },
 

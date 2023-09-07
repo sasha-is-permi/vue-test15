@@ -55,6 +55,13 @@ export default new Vuex.Store({
       }
   },
 
+  // Очистка корзины
+  clearBasket(state){
+      for(let i=0;i<state.catalog.length;i++){
+        state.catalog[i].basket = 0;
+      }
+  },
+
     
   },
 
@@ -92,6 +99,33 @@ export default new Vuex.Store({
           deleteProductFromBasket({ commit }, id) {
             commit('deleteProductFromBasket', id);
         },
+
+       // Очистка корзины
+       clearBasket({ commit }) {
+          commit('clearBasket');
+        },
+        
+      // Берем продукты
+      getProducts({commit,state}) {
+        let catalogForOutput = [];
+        for(let i=0;i<state.catalog.length;i++){
+          let elem={}
+          elem.name = state.catalog[i].name;
+          elem.price = state.catalog[i].price;
+          elem.basket = state.catalog[i].basket;
+          elem.summ = state.catalog[i].price*state.catalog[i].basket;
+          catalogForOutput.push(elem);
+        }
+
+        let catalogForOutputJSON = JSON.stringify(catalogForOutput);
+        console.log(catalogForOutputJSON);
+
+        commit('clearBasket');
+
+      },
+          
+
+        
               
   },
 

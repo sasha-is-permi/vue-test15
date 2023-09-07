@@ -1,6 +1,6 @@
 <template>
   <div>
-  <button class="button"  @click="$router.push( {name: 'CatalogOfProducts'})" >
+  <button class="button"  @click="goToCatalog" >
       КАТАЛОГ
   </button>
  </div> 
@@ -16,7 +16,9 @@ data(){
 },
 
   methods:{
-
+    goToCatalog(){
+     if (this.$route.name!=="CatalogOfProducts")  this.$router.push( {name: 'CatalogOfProducts'})
+    }
   },
 
 
