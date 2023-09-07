@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="table-wrap">
     <table class="table align-middle caption-top">
                             <thead>
                               <tr>
@@ -14,7 +14,7 @@
                                 <td>
                                    {{ item.price }}  
                                 </td>
-                                <td class="table-basket">
+                                <td class="table__basket">
                                    {{ item.basket }}  
                                 </td>
                                 <td>
@@ -85,20 +85,12 @@ export default {
 
 <style scoped>
 
-.table-basket{
+.table__basket{
   text-align:left;
 }
-.table__count{
-  text-align: left;
 
-}
-
-.table__countElem{
-  margin: 0 5px 0 5px;
-}
-
-.table__countKeyboard{
-margin-right:-10px;
+.table>:not(caption)>*>* {
+    border-bottom-width: 0px;
 }
 
 </style>

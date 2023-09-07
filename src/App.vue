@@ -1,14 +1,14 @@
 <template>
   <div id="app">
 
-    <main class="mainPage">
-     <section class="mainPage__leftSection">
-      <ButtonCatalog class="mainPage__ButtonCatalog"/>
-      <ButtonBasket class="mainPage__ShoppingBasket"/>
+    <main class="main-page">
+     <section class="main-page__left-section">
+      <ButtonCatalog class="main-page__button-catalog"/>
+      <ButtonBasket class="main-page__shopping-basket"/>
     </section>
 
-     <section class="mainPage__rightSection">
-         <div class="mainPage__CatalogOfProducts">
+     <section class="main-page__right-section">
+         <div class="main-page__catalog-products">
            <router-view />
          </div>    
      </section>
@@ -38,30 +38,35 @@ export default {
 }
 </script>
 
-<style>
-.mainPage{
+<style scoped>
+.main-page{
+  margin: 0 auto;
+  max-width:1200px;
   margin-top:100px;
   display:flex;
   justify-content: center;
 }
-.mainPage__leftSection{
-  width:40vw;
+.main-page__left-section{
+  width:30%;
   text-align: right;
   margin-right:50px;
 }
-.mainPage__rightSection{
-  width:60vw;
+.main-page__right-section{
+  width:70%;
 }
 
 
-.mainPage__ShoppingBasket{
+.main-page__shopping-basket{
   margin-top: 30px;
 }
 
-.mainPage__CatalogOfProducts{
-  width: 700px;
+.main-page__catalog-products{
+  width: 500px;
   height:700px;
   border: 1px solid;
 }
 
+.table>:not(caption)>*>* {
+    border-bottom-width: 0px;
+}
 </style>

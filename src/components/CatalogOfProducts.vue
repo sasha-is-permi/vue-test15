@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="table-wrap">
     <table class="table align-middle caption-top">
                             <thead>
                               <tr>
@@ -17,19 +17,20 @@
                                 <span class="table__count">
 
                                 <td>
-                                <span class="table__countKeyboard">
+                                <span class="table__count-keyboard">
+
                                  <img src="../assets/img/keyboard.jpg">
                                 </span>  
-                                <span class="table__countElem">
+                                <span class="table__count-number">
                                    {{ item.count }}  
                                 </span>
-                                <span class="table__countElem" @click="addProduct(item.id)">
+                                <span class="table__count-elem" @click="addProduct(item.id)">
                                 <button> + </button>
                                 </span>
-                                <span class="table__countElem"  @click="deleteProduct(item.id)">
+                                <span class="table__count-elem"  @click="deleteProduct(item.id)">
                                 <button> - </button>
                                 </span>
-                                <span class="table__countElem"  @click="transferProductToBasket(item.id)">
+                                <span class="table__count-elem"  @click="transferProductToBasket(item.id)">
                                  <img src="../assets/img/basket.jpg">
                                 </span>
 
@@ -89,17 +90,26 @@ export default {
 <style scoped>
 
 .table__count{
-  text-align: left;
+  text-align: center;
 
 }
 
-.table__countElem{
+.table__count-elem{
   margin: 0 5px 0 5px;
 }
 
-.table__countKeyboard{
+.table__count-number{
+  margin: 0 5px 0 5px;
+  display: inline-block;
+  width: 50px;
+}
+
+.table__count-keyboard{
 margin-right:-10px;
 }
 
+ td,  tr {
+    border-style: none;
+}
 </style>
 
