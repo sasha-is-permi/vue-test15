@@ -26,7 +26,15 @@ export default {
   components: {
    ButtonCatalog,
    ButtonBasket
-  }
+  },
+  methods:{
+  setData() {
+              this.$store.dispatch('getCatalog')              
+      },
+    },
+    created() {
+             this.setData();
+            },
 }
 </script>
 

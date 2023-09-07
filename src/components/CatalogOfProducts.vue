@@ -55,10 +55,7 @@ export default {
   },
 
     methods:{
-      setData() {
-              this.$store.dispatch('getCatalog')              
-      },
-
+  
       deleteProduct(id){
            this.$store.dispatch('deleteProduct',id)
       }, 
@@ -83,15 +80,6 @@ export default {
         }
 
               },    
-
-
-    created() {
-             this.setData();
-            },
-  
-
-
-
   }
 
 
@@ -99,6 +87,7 @@ export default {
 </script>
 
 <style scoped>
+
 .table__count{
   text-align: left;
 

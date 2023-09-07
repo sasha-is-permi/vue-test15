@@ -31,6 +31,13 @@ export default new Vuex.Store({
           if (state.catalog[index].count > 0) {state.catalog[index].count = state.catalog[index].count - 1}
       },
 
+      
+      deleteProductFromBasket(state, id) {
+        // находим - какой индекс у  элемента в массиве  из state
+        const index = state.catalog.findIndex(a => a.id === id);
+        state.catalog[index].basket = 0;
+    },
+
       addProduct(state, id) {
         // находим - какой индекс у  элемента в массиве  из state
         const index = state.catalog.findIndex(a => a.id === id);
@@ -80,6 +87,11 @@ export default new Vuex.Store({
       deleteProduct({ commit }, id) {
         commit('deleteProduct', id);
     },
+
+       // Удаление строки продукта из корзины
+          deleteProductFromBasket({ commit }, id) {
+            commit('deleteProductFromBasket', id);
+        },
               
   },
 
