@@ -1,6 +1,6 @@
 <template>
   <div>
-   {{catalog}}
+    333
   </div>  
   
 </template>
