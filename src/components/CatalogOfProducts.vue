@@ -17,16 +17,16 @@
                                 <span class="table__count">
 
                                 <td>
-                                <span>
+                                <span class="table__countKeyboard">
                                  <img src="../assets/img/keyboard.jpg">
                                 </span>  
                                 <span class="table__countElem">
                                    {{ item.count }}  
                                 </span>
-                                <span class="table__countElem">
+                                <span class="table__countElem" @click="addProduct(item.id)">
                                 <button> + </button>
                                 </span>
-                                <span class="table__countElem">
+                                <span class="table__countElem"  @click="deleteProduct(item.id)">
                                 <button> - </button>
                                 </span>
                                 <span class="table__countElem">
@@ -57,6 +57,14 @@ export default {
     methods:{
       setData() {
               this.$store.dispatch('getCatalog')              
+      },
+
+      deleteProduct(id){
+           this.$store.dispatch('deleteProduct',id)
+      }, 
+
+      addProduct(id){
+           this.$store.dispatch('addProduct',id)
       },
 
     },
@@ -90,7 +98,12 @@ export default {
 }
 
 .table__countElem{
-  margin: 0 10px 0 10px;
+  margin: 0 5px 0 5px;
 }
+
+.table__countKeyboard{
+margin-right:-10px;
+}
+
 </style>
 

@@ -11,10 +11,23 @@ export default new Vuex.Store({
 },
 
   mutations: {
+
          // записываем в state полученную информацию
          catalog(state,data){                 
           state.catalog = data      
         }, 
+
+        deleteProduct(state, id) {
+          // находим - какой индекс у уменьшаемого элемента в массиве  из state
+          const index = state.catalog.findIndex(a => a.id === id);
+          if (state.catalog[index].count > 0) {state.catalog[index].count = state.catalog[index].count - 1}
+      },
+
+      addProduct(state, id) {
+        // находим - какой индекс у уменьшаемого элемента в массиве  из state
+        const index = state.catalog.findIndex(a => a.id === id);
+        state.catalog[index].count = state.catalog[index].count + 1
+    },
   },
 
   actions: {
@@ -31,7 +44,15 @@ export default new Vuex.Store({
 
        commit('catalog',catalog)
 
-      }
+      },
+     // Добавление единицы продукта из state
+          addProduct({ commit }, id) {
+              commit('addProduct', id);
+          },
+      // Удаление единицы продукта из state
+      deleteProduct({ commit }, id) {
+        commit('deleteProduct', id);
+    },
               
   },
 
