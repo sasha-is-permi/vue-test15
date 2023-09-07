@@ -29,7 +29,7 @@
                                 <span class="table__countElem"  @click="deleteProduct(item.id)">
                                 <button> - </button>
                                 </span>
-                                <span class="table__countElem">
+                                <span class="table__countElem"  @click="transferProductToBasket(item.id)">
                                  <img src="../assets/img/basket.jpg">
                                 </span>
 
@@ -66,6 +66,13 @@ export default {
       addProduct(id){
            this.$store.dispatch('addProduct',id)
       },
+
+      
+      transferProductToBasket(id){
+           this.$store.dispatch('transferProductToBasket',id)
+      },
+
+      
 
     },
 
