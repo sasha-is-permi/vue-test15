@@ -85,10 +85,10 @@ export default new Vuex.Store({
 
 
   getters: {
+ // Возвращаем каталог по запросу из модулей
     catalog(state) {
-      // Возвращаем каталог по запросу из модулей
       return state.catalog
-  }    
-  },
+  } 
+  }
 })
 

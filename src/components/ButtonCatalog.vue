@@ -1,30 +1,26 @@
 <template>
   <div>
-    <button class="button">
-        КАТАЛОГ
-    </button>
-  </div>  
+  <button class="button">
+      КАТАЛОГ
+  </button>
+ </div> 
 </template>
 
 <script>
 export default {
-  name: 'ButtonCatalog',
-  data(){
-    return{
-
-    }
-  },
-
-    methods:{
-
-    },
-
-    computed: {           
-        
-              },    
-
+name: 'ShoppingBasket',
+data(){
+  return{
 
   }
+},
+
+  methods:{
+
+  },
+
+
+}
 
 
 
@@ -33,14 +29,17 @@ export default {
 <style scoped>
 
 .button {
-  width:200px;
-  height:50px;
-  background-color:white;
-  border: 1px solid;
+width:200px;
+height:50px;
+background-color:white;
+border: 1px solid;
 }
+
 .button:hover {
   cursor:pointer;
 }
 
+
 </style>
+
 

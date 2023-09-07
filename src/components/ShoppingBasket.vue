@@ -1,7 +1,7 @@
 <template>
   <div>
   <button class="button">
-      КОРЗИНА
+      КОРЗИНА ({{ count }})
   </button>
  </div> 
 </template>
@@ -19,7 +19,12 @@ data(){
 
   },
 
-  computed: {           
+  computed: {   
+    
+     // Количество продуктов (сколько видов товаров) в корзине 
+    count(){
+    return  this.$store.state.catalog.filter(item=>item.basket!=0).length;
+    }
       
             },    
 
