@@ -3,8 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-// Путь дл загружаемого файла json
-let url = "2_catalog_19-06-2023.json"
+import data from "../../2_catalog_19-06-2023.json";
 
 export default new Vuex.Store({
   state: {
@@ -21,20 +20,9 @@ export default new Vuex.Store({
   actions: {
 
      // Получение всех элементов из json-файла
-     getCatalog({commit}){
-
-
-       fetch(`${url}`)
-       .then((response) => response.json())
-       .then((data) => {
-       console.log("catalog",data)         
+      getCatalog({commit}){  
        commit('catalog',data)
-       }
-       )
-       .catch(function () {
-        console.log("Ошибка получения данных !")
-          })
-        },
+      }
               
   },
 
