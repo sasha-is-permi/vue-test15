@@ -109,6 +109,7 @@ export default new Vuex.Store({
       getProducts({commit,state}) {
         let catalogForOutput = [];
         for(let i=0;i<state.catalog.length;i++){
+          if (state.catalog[i].basket===0) continue;
           let elem={}
           elem.name = state.catalog[i].name;
           elem.price = state.catalog[i].price;
