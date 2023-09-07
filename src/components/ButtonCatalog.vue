@@ -1,6 +1,6 @@
 <template>
   <div>
-  <button class="button">
+  <button class="button"  @click="$router.push( {name: 'CatalogOfProducts'})" >
       КАТАЛОГ
   </button>
  </div> 

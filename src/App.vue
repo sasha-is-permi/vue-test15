@@ -4,11 +4,13 @@
     <main class="mainPage">
      <section class="mainPage__leftSection">
       <ButtonCatalog class="mainPage__ButtonCatalog"/>
-      <ShoppingBasket class="mainPage__ShoppingBasket"/>
+      <ButtonBasket class="mainPage__ShoppingBasket"/>
     </section>
 
      <section class="mainPage__rightSection">
-         <CatalogOfProducts class="mainPage__CatalogOfProducts"/>
+         <div class="mainPage__CatalogOfProducts">
+           <router-view />
+         </div>    
      </section>
     </main>
 
@@ -16,16 +18,14 @@
 </template>
 
 <script>
-import CatalogOfProducts from './components/CatalogOfProducts.vue'
 import ButtonCatalog from './components/ButtonCatalog.vue'
-import ShoppingBasket from './components/ShoppingBasket.vue'
+import ButtonBasket from './components/ButtonBasket.vue'
 
 export default {
   name: 'App',
   components: {
-   CatalogOfProducts,
    ButtonCatalog,
-   ShoppingBasket
+   ButtonBasket
   }
 }
 </script>
