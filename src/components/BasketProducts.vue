@@ -18,7 +18,7 @@
                                    {{ item.basket }}  
                                 </td>
                                 <td>
-                                   {{ Math.round(item.price * item.basket*100)/100 }}  
+                                   {{ (item.price * item.basket).toFixed(2) }}  
                                 </td>
 
                                 <td >
@@ -104,7 +104,7 @@ export default {
         },
 
         sumBasket(){
-          return  this.$store.state.catalog.reduce((sum, current) => sum + Math.round(current.basket*current.price*100 )/100, 0);
+          return  this.$store.state.catalog.reduce((sum, current) => sum + (current.basket*current.price), 0).toFixed(2);
         }  
               },    
   }

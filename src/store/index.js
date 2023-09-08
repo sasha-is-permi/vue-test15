@@ -8,13 +8,21 @@ import data from "../../2_catalog_19-06-2023.json";
 export default new Vuex.Store({
   state: {
     /*
+
       Структура полей:
       name    // имя продукта
       price   // цена
       id      // id элемента
-      count   // добавляемые элементы в каталоге до переноса в корзину
-      bascet  // перенесенные в корзину элементы 
-    */
+      count   // количество добавляемых позиций продукта в каталоге до переноса в корзину
+      basket  // количество перенесенных в корзину позиций продукта. Это количество потом фигурирует в корзине 
+              // и в файле *.json, выгружаемого из корзины. 
+    
+    Тут два варианта. Либо реализовывать все поля в одном массиве, либо делать два массива - один catalog, один basket. 
+    А затем связывать их по id продукта (id добавляем при добавлении нового элемента в корзину или загрузки информации в каталог).
+    Для большой коммерческой программы более правильно реализовать два отдельных массива.
+    В данном случае для простой программы все данные помещены в массив catalog.
+    
+      */
     catalog: [],
 },
 
@@ -111,11 +119,14 @@ export default new Vuex.Store({
         for(let i=0;i<state.catalog.length;i++){
           if (state.catalog[i].basket===0) continue;
           let elem={}
-          elem.name = state.catalog[i].name;
-          elem.price = state.catalog[i].price;
-          elem.basket = state.catalog[i].basket;
-          elem.summ = state.catalog[i].price*state.catalog[i].basket;
-          catalogForOutput.push(elem);
+          elem.name = state.catalog[i].name;  // имя продукта
+          elem.price = state.catalog[i].price; // цена продукта
+          elem.col = state.catalog[i].basket;  // количество выбранных позиций в корзину
+          // toFixed() для округления, поскольку javascript выполняет расчеты с погрешностью- бывает, 99999 в конце выдает.
+          // Возвращает string, так что тут нужно быть аккуратным.
+          // Для устранения этого эффекта существуют также специальные библиотеки. 
+          elem.summ = (state.catalog[i].price*state.catalog[i].basket).toFixed(2); // стоимость выбранных позиций в корзине
+          catalogForOutput.push(elem); // Добавление нового элемента в массив
         }
 
         let catalogForOutputJSON = JSON.stringify(catalogForOutput);
